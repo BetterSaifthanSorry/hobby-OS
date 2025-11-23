@@ -1,0 +1,16 @@
+.vscode/
+.VSCodeCounter/
+
+*.o
+*.img
+*.iso
+*.log
+
+kernel-0
+boot.img
+
+__pycache__/
+*.pyc
+
+*.tmp
+*.bak
