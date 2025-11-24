@@ -22,7 +22,7 @@ Prerequisites (Linux/macOS or WSL recommended):
 
 - `gcc` (32-bit capable) and `ld`
 - `nasm`
-- `grub-mkrescue` (often from `grub-pc-bin` + `xorriso`)
+- `grub-mkrescue`
 - `qemu-system-i386`
 
 ### Compile and Package
@@ -41,13 +41,10 @@ cd src
 make qemu
 ```
 
-The provided rule launches `qemu-system-i386` with an RTL8139 NIC (looped back via UDP forwarding) so you can watch packet traffic and the ring3 transition from the VGA console.
+## Next Steps
+Next I plan to add a shell, flesh out the syscall interface even more, add proper process management.
+Ultimately I would love to add a TCP layer over the existing stack, and maybe also write a USB driver. These goals are perhaps over-ambitious.
 
-## Status & Next Steps
-
-The kernel currently transmits a demo UDP payload, prints any received data, and then switches into user space. Planned improvements include fleshing out the syscall handler, adding a scheduler, improving ARP/IP handling, and migrating the RTL8139 logic into a dedicated driver module.
-
-If you try it out, feel free to open issues or share ideas—this codebase exists to learn and experiment.
 
 
 ## Network Stack Demo 
