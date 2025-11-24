@@ -1,3 +1,5 @@
+.PHONY: qemu
+
 # === CONFIG ===
 CC=gcc
 LD=ld
@@ -79,3 +81,6 @@ udp.o : udp.c
 clean:
 	rm -f *.o $(ELF) $(ISO)
 	rm -rf $(ISO_DIR)/boot
+
+qemu: all
+	qemu-system-i386 -cdrom os.iso -m 128   -netdev user,id=network0,hostfwd=udp:127.0.0.1:6001-127.0.0.1:6000 -device rtl8139,netdev=network0,mac=52:54:00:12:34:56   -object filter-dump,id=network_filter_object,netdev=network0,file=dump.dat

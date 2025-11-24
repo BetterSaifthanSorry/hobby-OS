@@ -17,7 +17,7 @@ uint16_t queue_read_offset = 0x0;
 uint8_t TX_STATUS[4] = {TX_STATUS_0, TX_STATUS_1, TX_STATUS_2, TX_STATUS_3};
 uint8_t TX_START[4] = {TX_START_0, TX_START_1, TX_START_2, TX_START_3};
 
-uint8_t protocol_address[4] = {10, 0, 2, 15};
+uint8_t protocol_address[4] = {127, 0, 0, 1};
 
 // this is going to be a bit strange. but for now in this init im just trying to detect the nic not any other devices.
 //  using pci info in the qemu monitor, i can see that rtl8139 is at bus 0, device 3, function 0
