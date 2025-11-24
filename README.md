@@ -8,6 +8,7 @@ A 32-bit operating system that boots via the GRUB bootloader, sets up its GDT, I
 - Paging.
 - RTL8139 initialization, interrupt handling, RX ring buffering, and TX path through a basic Ethernet/IP/UDP pipeline (with ARP support).
 - User-mode trampoline (`switch_space`) that builds a trapframe and executes a demo `int 0x80` syscall from ring 3.
+- Network stack with Ethernet, IP, UDP and, ARP.
 
 ## Repository Layout
 
@@ -41,8 +42,8 @@ make qemu
 ```
 
 ## Next Steps
-Next I plan to add a shell, flesh out the syscall interface even more, add proper process management, write a proper heap allocator for the various buffers, which are currently static.
+Next I plan to add a shell, flesh out the syscall interface even more, add proper process management, write a proper heap allocator for the various buffers, which are currently static. I'd also like to add a ICMP module.
 Ultimately I would love to add a TCP layer over the existing stack, and maybe also write a USB driver. These last two goals might be too ambitious.
 
 ## Network Stack Demo 
-To test the network stack, run the kernel with make qemu which will enable port forwarding from the host. In a seperate terminal, run netcat using the command `nc -u 127.0.0.1 6001`, which will open a UDP connection from the host machine to the OS. Type anything into the terminal and press Enter, the packet will then show up inside the kernel.
+To test the network stack, run the kernel with make qemu which will enable port forwarding from the host. In a seperate terminal, run netcat using the command `nc -u 127.0.0.1 6001`, which will be able to send UDP packets from the host machine to the OS. Type anything into the terminal and press Enter, the packet will then show up inside the kernel.
